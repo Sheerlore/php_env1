@@ -24,7 +24,10 @@ services:
         volumes: 
             - ./mysql:/var/lib/mysql
         environment: 
-            MYSQL_ROOT_PASSWORD: secret
+            MYSQL_ROOT_PASSWORD: passward
+            MYSQL_DATABASE: test
+            MYSQL_USER: root
+            MYSQL_PASSWORD: passward
         
     phpmyadmin:
         image: phpmyadmin/phpmyadmin:latest
