@@ -18,20 +18,16 @@ services:
             - db
 
     db:
-        image: mysql:5.7
+        build: ./mysql
+        restart: always
         ports: 
             - 13306:3306
         volumes: 
-            - ./mysql:/var/lib/mysql
+            - ./mysql/initdb.d:/docker-entrypoint-initdb.d
+            - ./mysql/conf.d:/etc/mysql/conf.d
+            - ./log/mysql:/var/log/mysql
         environment: 
-            MYSQL_ROOT_PASSWORD: passward
             MYSQL_DATABASE: test
             MYSQL_USER: root
             MYSQL_PASSWORD: passward
-        
-    phpmyadmin:
-        image: phpmyadmin/phpmyadmin:latest
-        ports: 
-            - 8888:80
-        depends_on: 
-            - db
+            MYSQL_ROOT_PASSWORD: passward
