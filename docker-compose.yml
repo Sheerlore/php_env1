@@ -23,11 +23,8 @@ services:
         ports: 
             - 13306:3306
         volumes: 
-            - ./mysql/initdb.d:/docker-entrypoint-initdb.d
-            - ./mysql/conf.d:/etc/mysql/conf.d
-            - ./log/mysql:/var/log/mysql
+            - ./mysql/data:/var/lib/mysql
         environment: 
-            MYSQL_DATABASE: test
-            MYSQL_USER: root
-            MYSQL_PASSWORD: passward
+            MYSQL_DATABASE: testdb
             MYSQL_ROOT_PASSWORD: passward
+            TZ: Asia/Tokyo
